@@ -1,3 +1,6 @@
+// https://www.hackerrank.com/contests/projecteuler/challenges/euler007/problem
+
+
 #include <iostream>
 #include <vector>
 #include <cmath>
@@ -16,6 +19,7 @@ long nth_prime_number(long n) {
         upper_bound = 13;
     }
 
+    // Eratosthenes sieve
     vector<bool> is_prime = vector<bool>(upper_bound, true);
     long prime_counter = 0;
 
@@ -31,6 +35,7 @@ long nth_prime_number(long n) {
             is_prime[j*(i+2)-2] = false;
         }
     }
+
     throw "nth prime not found";
 }
 

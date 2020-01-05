@@ -23,10 +23,20 @@
             "problemMatcher": []
         },
         {
+            "label": "cleanup",
+            "command": "rm",
+            "args": [
+                "-rf", "CMakeFiles", "CMakeCache.txt", "cmake_install.cmake", "Makefile"
+            ],
+            "problemMatcher": []
+        },
+        {
             "label": "build",
+            "dependsOrder": "sequence",
             "dependsOn": [
                 "cmake",
-                "make"
+                "make",
+                "cleanup",
             ]
         }
     ]
