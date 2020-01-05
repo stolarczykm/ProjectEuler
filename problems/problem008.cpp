@@ -12,7 +12,7 @@ long largest_product(string num, int k) {
     }
 
     long largest_product = 0;
-    for (int i = 0; i < num.size() - k; ++i) {
+    for (int i = 0; i < num.size() - k + 1; ++i) {
         long product = 1;
         for (int j = 0; j < k; ++j) {
             product *= (num[i+j] - '0');
