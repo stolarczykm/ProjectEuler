@@ -1,3 +1,5 @@
+// https://www.hackerrank.com/contests/projecteuler/challenges/euler014/problem
+
 #include <cmath>
 #include <cstdio>
 #include <vector>
@@ -13,42 +15,33 @@ long next_collatz_number(long n) {
     return n / 2;
 }
 
-template<class T, class S>
-bool contains(unordered_map<T, S> m, T key) {
-    if (m.find(key) == m.end()) {
-        return false;
-    }
-    return true;
-}
 
-
-
-long collatz_sequence_length(long n, vector<long> &cache2) {
+long collatz_sequence_length(long n, vector<long> &cache) {
     if (n == 1) return 1;
-    if (n < cache2.size() && cache2[n] > 0) {
-        return cache2[n];
+    if (n < cache.size() && cache[n] > 0) {
+        return cache[n];
     }
     
     long sequence_length;
     if (n % 2) {
-        sequence_length = collatz_sequence_length(3*n + 1, cache2) + 1;
+        sequence_length = collatz_sequence_length(3*n + 1, cache) + 1;
     } else {
-        sequence_length = collatz_sequence_length(n / 2, cache2) + 1;
+        sequence_length = collatz_sequence_length(n / 2, cache) + 1;
     }
 
-    if (n < cache2.size()) {
-        cache2[n] = sequence_length;
+    if (n < cache.size()) {
+        cache[n] = sequence_length;
     }
     return sequence_length;
 }
 
 
 int main() {
-    vector<long> cache2 = vector<long>(5000001);
-    unordered_map<long, int> cache_max_ind = unordered_map<long, int>();
-    cache2[1] = 1;
-    cache_max_ind[1] = 1;
-    cache_max_ind[2] = 2;
+    vector<long> sequence_lengths_cache = vector<long>(5000001);
+    vector<long> result_cache = vector<long>(5000001);
+    sequence_lengths_cache[1] = 1;
+    result_cache[1] = 1;
+    result_cache[2] = 2;
 
     int t;
     cin >> t; 
@@ -62,26 +55,26 @@ int main() {
 
         for (int n1 = max_n0; n1 <= n0; ++n1) {
             int n = n1;
-            collatz_sequence_length(n, cache2);
+            collatz_sequence_length(n, sequence_lengths_cache);
         }
 
         int which = 0;
         int max_length = -1;
-        if (n0 < cache_max_ind.size()) {
-            which = cache_max_ind[n0];
-            max_length = cache2[which];
+        if (n0 <= max_n0) {
+            which = result_cache[n0];
+            max_length = sequence_lengths_cache[which];
         } else {
-            which = cache_max_ind[max_n0];
-            max_length = cache2[which];
+            which = result_cache[max_n0];
+            max_length = sequence_lengths_cache[which];
         }
 
         
         for (int z=max_n0; z <= n0; ++z) {
-            if (cache2[z] >= max_length) {
+            if (sequence_lengths_cache[z] >= max_length) {
                 which = z;
-                max_length = cache2[z];
+                max_length = sequence_lengths_cache[z];
             }
-            cache_max_ind[z] = which;
+            result_cache[z] = which;
         }
         cout << which << endl;
 
