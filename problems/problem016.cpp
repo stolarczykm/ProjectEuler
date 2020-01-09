@@ -14,7 +14,7 @@ vector<long> get_sums(int n) {
         int remainder = 0; 
         long sum = 0;
         for (int j = 0; j < digits.size(); ++j) {
-            sum += digits[j]);
+            sum += digits[j];
             int digit_double = digits[j] * 2 + remainder;
             digits[j] = digit_double % 10;
             remainder = digit_double / 10;
