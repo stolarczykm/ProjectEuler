@@ -14,4 +14,6 @@ set(CMAKE_CXX_STANDARD 14)
 # add_executable(problem015 problems/problem015.cpp)
 # add_executable(problem016 problems/problem016.cpp)
 # add_executable(problem017 problems/problem017.cpp)
-add_executable(problem018 problems/problem018.cpp)
+# add_executable(problem018 problems/problem018.cpp)
+
+add_executable(problem020 problems/problem020.cpp problems/number.h)
