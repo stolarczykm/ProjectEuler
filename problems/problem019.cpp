@@ -93,9 +93,9 @@ int main() {
         auto n2 = count_lower(sundays, date2, false);
         auto n1 = count_lower(sundays, date1, true);
 
-        for (int i = n1-1; i <= n2; ++i) {
-            cout << sundays[i].year << " " << sundays[i].month + 1 << " " << sundays[i].day + 1 << endl;
-        }
+        //for (int i = n1-1; i <= n2; ++i) {
+        //    cout << sundays[i].year << " " << sundays[i].month + 1 << " " << sundays[i].day + 1 << endl;
+        //}
 
         cout << n2 - n1 + sundays.size() * int(n2 - n1 < 0) << endl;
     }
