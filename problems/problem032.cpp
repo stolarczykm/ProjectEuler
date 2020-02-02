@@ -80,7 +80,6 @@ long brute_force(int n) {
 }
 
 
-
 int main() {
     int n;
     cin >> n;
