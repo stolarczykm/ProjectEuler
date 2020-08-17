@@ -41,7 +41,6 @@ int main() {
             n1++;
         }
     }
-    
 
     return 0;
 }
