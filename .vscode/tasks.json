@@ -7,6 +7,22 @@
     },
     "tasks": [
         {
+            "label": "cp",
+            "command": "cp",
+            "args": [
+                "../CMakeLists_template.txt", "../CMakeLists.txt"
+            ],
+            "problemMatcher": []
+        },
+        {
+            "label": "sed",
+            "command": "sed",
+            "args": [
+                "-i", "s/__FILENAME__/${fileBasenameNoExtension}/g", "../CMakeLists.txt"
+            ],
+            "problemMatcher": []
+        },
+        {
             "label": "cmake",
             "command": "cmake",
             "args": [
@@ -26,7 +42,7 @@
             "label": "cleanup",
             "command": "rm",
             "args": [
-                "-rf", "CMakeFiles", "CMakeCache.txt", "cmake_install.cmake", "Makefile"
+                "-rf", "CMakeFiles", "CMakeCache.txt", "cmake_install.cmake", "Makefile", "CMakeLists.txt"
             ],
             "problemMatcher": []
         },
@@ -34,6 +50,8 @@
             "label": "build",
             "dependsOrder": "sequence",
             "dependsOn": [
+                "cp",
+                "sed",
                 "cmake",
                 "make",
             ]
